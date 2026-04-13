@@ -19,7 +19,7 @@ fn main() {
         .trim()
         .to_string();
     let asci_length = asci_map.chars().count(); // 69 bokstäver
-    let mut _img = image::open("images.jpg").unwrap();
+    let mut _img = image::open("kirk.jpg").unwrap();
     _img = image::DynamicImage::resize(&_img, TERMINAL_WIDTH, TERMINAL_HEIGHT, FilterType::Nearest);
     // let gray = _img.to_luma8();
     let (width, height) = _img.dimensions();
@@ -52,8 +52,8 @@ fn print_picture(pixels: Vec<u8>, ascii: &str) {
         stdout().execute(SetForegroundColor(color)).unwrap();
         print!("{}{}", ascii_char, ascii_char);
         stdout().flush().unwrap();
-        thread::sleep(Duration::from_millis(1));
     }
+    thread::sleep(Duration::from_millis(16));
     println!("");
-    stdout().execute(SetForegroundColor(Color::White)).unwrap();
+    stdout().execute(SetForegroundColor(Color::Grey)).unwrap();
 }
